@@ -38,11 +38,13 @@ const pausefn=()=>{
       Text to Speech
     </div>
      <textarea rows='7' cols="50" id='area' placeholder="Enter your text here" onChange={e=>setText(e.target.value)} />
-<button className='btn'onClick={()=>speak({text:text,voice:voices.find(voice => voice.name === accent)})}>
+<div id='buttongrp'>
+<button className='btn'onClick={()=>cancel()}>Stop</button> 
+<button className='btn stop'onClick={()=>speak({text:text,voice:voices.find(voice => voice.name === accent)})}>
 Listen
 </button>
- <button className='btn stop'onClick={()=>cancel()}>Stop</button> 
- 
+ </div>
+ <p id='name'>@amithjayapraban</p>
 </div>
 
     
