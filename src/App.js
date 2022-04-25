@@ -4,15 +4,18 @@ import { useState ,useEffect} from 'react';
 import { useSpeechSynthesis} from 'react-speech-kit';
 function App() {
   const [text, setText] = useState('');
-  const { speak ,pause} = useSpeechSynthesis();
+  const { speak ,pause,cancel,speaking} = useSpeechSynthesis();
   const[accent,setAccent] = useState('');
   var voices = speechSynthesis.getVoices();
 console.log('accent',accent);
+const pausefn=()=>{
+  if(speaking){
+    pause();
+  }
+}
   // var utterThis = new SpeechSynthesisUtterance();
   // console.log(voices);
-  // useEffect(() => {
-    
-  // },[text]);
+ 
   // if(text){
   //   speak({
   //     text,
@@ -38,8 +41,8 @@ console.log('accent',accent);
 <button className='btn'onClick={()=>speak({text:text,voice:voices.find(voice => voice.name === accent)})}>
 Listen
 </button>
-{/* <button className='btn stop'onClick={()=>pause()}>Stop</button> */}
-
+ <button className='btn stop'onClick={()=>cancel()}>Stop</button> 
+ 
 </div>
 
     
